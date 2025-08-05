@@ -15,7 +15,7 @@ jobs:
                 kubeconfig: ${{ secrets.KUBECONFIG }}
             - name: Fetching Kubernetes cluster details
               run: |
-               kubectl version --short
+               kubectl version
                echo ----------------
                kubectl get nodes
                kubectl config get-clusters
