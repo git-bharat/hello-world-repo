@@ -1,0 +1,24 @@
+name: Kubernetes-login
+on: push
+
+jobs:
+    kubernetes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Installing kubectl cli
+              uses: azure/setup-kubectl@v1
+
+            - name: Setting context
+              uses: azure/k8s-set-context@v4
+              with:
+                method: kubeconfig
+                kubeconfig: ${{ secrets.KUBECONFIG }}
+            - name: Fetching Kubernetes cluster details
+              run: |
+               kubectl version --short
+               echo ----------------
+               kubectl get nodes
+               kubectl config get-clusters
+
+
+
