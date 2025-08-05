@@ -2,23 +2,20 @@ name: Kubernetes-login
 on: push
 
 jobs:
-    kubernetes:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Installing kubectl cli
-              uses: azure/setup-kubectl@v1
-
-            - name: Setting context
-              uses: azure/k8s-set-context@v4
-              with:
-                method: kubeconfig
-                kubeconfig: ${{ secrets.KUBECONFIG }}
-            - name: Fetching Kubernetes cluster details
-              run: |
-               kubectl version
-               echo ----------------
-               kubectl get nodes
-
-
-
-
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installing kubectl cli
+        uses: azure/setup-kubectl@v3
+        
+      - name: Setting context
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          
+      - name: Fetching Kubernetes cluster details
+        run: |
+          kubectl version
+          echo ----------------
+          kubectl get nodes
