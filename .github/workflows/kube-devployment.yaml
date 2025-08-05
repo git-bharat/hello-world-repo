@@ -18,7 +18,7 @@ jobs:
                kubectl version
                echo ----------------
                kubectl get nodes
-               kubectl config get-clusters
+
 
 
 
